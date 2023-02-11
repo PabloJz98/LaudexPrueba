@@ -1,0 +1,52 @@
+<div class="container">
+  <br>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/logo-laudex.png"  height="30" alt="">
+      Prueba Laudex
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]='["/inicio"]'>Inicio <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right" *ngIf="!identity">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]='["/login"]'>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]='["/registro"]'>Registro</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right" *ngIf="identity && identity.name">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ identity.name + " " + identity.surname }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/mostrar-alumnos']">Consultar Alumnos</a>
+            <a class="dropdown-item" [routerLink]="['/crear-alumno']">Agregar Alumnos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/logout/1']">Salir</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+  <footer class="footer">
+    <hr>
+    <div>
+      Creado por Pedro Miguel Martinez Flores &copy;
+    </div>
+    <hr>
+  </footer>
+</div>
